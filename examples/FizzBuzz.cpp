@@ -39,7 +39,9 @@ int main()
     MonoidFunctionLift<int, StringWrap> f2([](int x) { return x % 5 == 0 ? "Buzz" : ""; });
     MonoidFunctionLift<int, StringWrap> f3(Unit{}); // Unit element that does nothing for the purpose of testing 
 
-    auto f = f1 * f2 * f3;
+    std::vector funcs{f1, f2, f3};
+
+    auto f = mconcat<decltype(f1)>(funcs.begin(), funcs.end());
 
     int N = 0;
     std::cout << "Iterate from 1 to ";
