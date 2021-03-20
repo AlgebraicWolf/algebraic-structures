@@ -8,14 +8,15 @@ class Unit {
 };
 
 // Multiplication of values of presented types is supported
-template<typename U, typename V, typename T>
+template <typename U, typename V, typename T>
 concept Multiplicable = requires(U u, V v) {
-    {u * v} -> std::same_as<T>;
+    { u* v }
+    ->std::same_as<T>;
 };
 
-template<typename T>
+template <typename T>
 concept HasIdentity = requires {
-    T(Unit()); // Can construct a value from an identity element 
+    T(Unit());  // Can construct a value from an identity element
 };
 
 #endif
