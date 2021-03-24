@@ -34,7 +34,7 @@ struct has_fmap {
 
     template <typename C, typename P>
     static auto test(P *p) -> decltype(C::fmap(*p));
-
+    
     template <typename, typename>
     static std::false_type test(...);
 
